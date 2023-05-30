@@ -9,7 +9,9 @@ go get -u github.com/spf13/cobra
 ```
 
 examples:
-
+```sh
+go run main.go summoner [Summoner Name] //Name of the user who plays Team Fight Tactics
+```
 ```sh
 go run main.go insert plasticsearch apm 
 ```
