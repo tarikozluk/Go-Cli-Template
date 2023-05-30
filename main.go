@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Typering/riot_data/summoner_info_tab"
 	"fmt"
 	"github.com/spf13/cobra"
 	"os"
@@ -59,9 +60,23 @@ func main() {
 			fmt.Println("File successfully created:", file_name+"."+extension)
 		},
 	}
+
+	summoner_name := &cobra.Command{
+		Use:   "summoner [Name]",
+		Short: "Get UUID and Summoner ID",
+		Args:  cobra.ExactArgs(1),
+		Run: func(cmd *cobra.Command, args []string) {
+			summoner := args[0]
+
+			fmt.Println("Summoner Name:", summoner)
+			summoner_info_tab.Summoner_checker(summoner)
+		},
+	}
+
 	//todo: create an api and get data from there with cli commands (go run main.go last_value kpi server:port)
 	rootCmd.AddCommand(create_file)
 	rootCmd.AddCommand(insertCmd)
+	rootCmd.AddCommand(summoner_name)
 
 	rootCmd.SetHelpCommand(&cobra.Command{
 		Use:    "no-help",
